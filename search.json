@@ -12,12 +12,5 @@
     "title": "About",
     "section": "",
     "text": "About this site"
-  },
-  {
-    "objectID": "class-2025-6-30.html",
-    "href": "class-2025-6-30.html",
-    "title": "Class-2025-06-30",
-    "section": "",
-    "text": "library(tidyverse)\nlibrary(primer.data)"
   }
 ]
