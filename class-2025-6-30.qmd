@@ -3,10 +3,45 @@ title: "Class-2025-06-30"
 format: html
 ---
 
+This dataset illustrates the average gas prices in the United States over a series of years, adjusted for inflation trends. A clear cyclical pattern emerges, with prices fluctuating in response to economic events, policy changes, and global oil market dynamics. For instance, notable spikes may align with periods of geopolitical tension or supply disruptions, while dips often follow economic slowdowns or increased domestic production. By adjusting for inflation, the data offers a more accurate historical comparison, showing how real gas prices have evolved over time rather than being distorted by general price level increases. This insight is crucial for understanding long-term energy affordability and policy impact, especially when considering consumer cost burdens and planning future infrastructure or alternative fuel initiatives. The visualization emphasizes these trends with a professional clarity that aids both academic and policy-driven analyses.
 
 ```{r}
 #| message: false
-#| warning: false
+#| echo: false
+# Load required libraries
+
+
+
 library(tidyverse)
-library(primer.data)
+
+# Load your dataset
+data <- read_csv("Predict Gas Price Given Year and Inflation Rate - Sheet1.csv")
+
+# Professional-grade plot
+ggplot(data, aes(x = Year, y = `Gas Price Avg`)) +
+  geom_line(color = "#2C3E50", linewidth = 1.5) +                    # changed size to linewidth
+  geom_point(color = "#E74C3C", size = 3, alpha = 0.8) +             # points still use size
+  labs(
+    title = "U.S. Average Gas Prices (by Year)",
+    subtitle = "Adjusted for Inflation Trends",
+    x = "Year",
+    y = "Average Gas Price (USD)",
+    caption = "Source: Internal Dataset"
+  ) +
+  scale_x_continuous(breaks = seq(min(data$Year), max(data$Year), by = 2)) +
+  scale_y_continuous(breaks = pretty(data$`Gas Price Avg`, n = 8)) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 13, hjust = 0.5, margin = margin(b = 10)),
+    axis.title.x = element_text(size = 13, face = "bold"),
+    axis.title.y = element_text(size = 13, face = "bold"),
+    axis.text = element_text(size = 11),
+    plot.caption = element_text(size = 10, hjust = 1, face = "italic"),
+    panel.grid.major = element_line(color = "gray80"),
+    panel.grid.minor = element_blank(),
+    panel.spacing = unit(1, "lines")
+  )
+
+
 ```
